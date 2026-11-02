@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
+    "preview": "vite preview",
     "test": "node --test tests/data.test.js tests/admin.test.js",
     "test:e2e": "playwright test"
   },

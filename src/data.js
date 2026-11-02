@@ -1,6 +1,8 @@
+import {publicAsset} from './assets.js';
+
 export const hotelDefault = {name:'SkillLink Phú Quốc Hotel & Resort', address:'Bãi Trường, Dương Tơ, Phú Quốc, Việt Nam', phone:'0000000000', zalo:'0000000000', email:'hello@skilllink.example', checkin:'14:00', checkout:'12:00', facebook:'https://facebook.example/skilllink', instagram:'https://instagram.example/skilllink'};
 export const photoSources = {hero:'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=3200&q=95', pool:'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1200&q=85', beach:'https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=1400&q=85', dining:'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=85', spa:'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=85'};
-export const photos = Object.fromEntries(Object.keys(photoSources).map(key=>[key,key==='hero'?'/images/hero-new.jpg':`/images/${key}.jpg`]));
+export const photos = Object.fromEntries(Object.keys(photoSources).map(key=>[key,publicAsset(key==='hero'?'images/hero-new.jpg':`images/${key}.jpg`)]));
 export const roomTypes = [
  ['Deluxe Garden View',42,2,'1 giường King',2400000,'photo-1611892440504-42a792e24d32','Ban công riêng mở ra khu vườn nhiệt đới, nơi mỗi buổi sáng bắt đầu thật dịu dàng.'],
  ['Deluxe Ocean View',45,2,'1 King hoặc 2 giường đơn',2900000,'photo-1590490360182-c33d57733427','Đón gió biển và ánh nắng trong không gian ấm áp với tầm nhìn hướng đại dương.'],
@@ -8,7 +10,7 @@ export const roomTypes = [
  ['Family Suite',78,4,'1 King & 2 giường đơn',4800000,'photo-1560448204-e02f11c3d0e2','Không gian rộng rãi với hai khu vực nghỉ ngơi, dành cho những khoảnh khắc bên gia đình.'],
  ['Ocean Suite',90,3,'1 giường King',6200000,'photo-1578683010236-d716f9a3f461','Phòng khách riêng và ban công hướng biển, cho một kỳ nghỉ chậm rãi và trọn vẹn.'],
  ['Beachfront Villa',160,6,'2 giường King & 2 giường đơn',12500000,'photo-1613977257363-707ba9348227','Biệt thự sát biển với hồ bơi riêng, khu vườn yên tĩnh và không gian dành riêng cho bạn.']
-].map((r,i)=>({id:i,name:r[0],size:r[1],capacity:r[2],bed:r[3],price:r[4],image:`/images/room-${i}.jpg`,sourceImage:`https://images.unsplash.com/${r[5]}?auto=format&fit=crop&w=1000&q=85`,description:r[6]}));
+].map((r,i)=>({id:i,name:r[0],size:r[1],capacity:r[2],bed:r[3],price:r[4],image:publicAsset(`images/room-${i}.jpg`),sourceImage:`https://images.unsplash.com/${r[5]}?auto=format&fit=crop&w=1000&q=85`,description:r[6]}));
 export const today = new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Ho_Chi_Minh',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
 export function addDays(date,n){const d=new Date(date+'T12:00:00Z');d.setUTCDate(d.getUTCDate()+n);return d.toISOString().slice(0,10)}
 export const money=n=>new Intl.NumberFormat('vi-VN').format(n)+' VNĐ';
